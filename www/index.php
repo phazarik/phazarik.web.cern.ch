@@ -25,6 +25,7 @@
                 <h2 class="h5 border-bottom pb-2 mb-3">Data Directories</h2>
                 <ul class="list-unstyled directory-list">
                     <li><a href="temp-plots.php">&#8627; /temp-plots</a> <span class="text-muted">- Temporary plots for postfit study</span></li>
+                    <li><a href="circles/web/index.php">&#8627; /pie-charts</a> <span class="text-muted">- circles tool for displaying FastTimerService like pie-charts</span></li>
                 </ul>
             </div>
         </div>

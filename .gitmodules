@@ -1,0 +1,3 @@
+[submodule "www/circles"]
+	path = www/circles
+	url = https://github.com/fwyzard/circles.git
