@@ -40,33 +40,38 @@ foreach ($items as $item) {
     if ($item === '.' || $item === '..') continue;
     
     $item_path = $target_path . '/' . $item;
-    
-    // Create the relative path for URL links
     $rel_path = $req_dir ? $req_dir . '/' . $item : $item;
     
     if (is_dir($item_path)) {
-        $directories[] = [
+        // Store as associative array with name as key for easier sorting
+        $directories[$item] = [
             'name' => $item,
             'url' => 'temp-plots.php?dir=' . urlencode($rel_path)
         ];
     } else {
         $ext = strtolower(pathinfo($item, PATHINFO_EXTENSION));
-        // The actual URL path to the file (for href and src attributes)
         $file_url = $base_dir . '/' . $rel_path;
         
         if ($ext === 'pdf') {
-            $pdfs[] = [
+            $pdfs[$item] = [
                 'name' => $item,
                 'url' => $file_url
             ];
         } elseif (in_array($ext, ['png', 'jpg', 'jpeg'])) {
-            $images[] = [
+            $images[$item] = [
                 'name' => $item,
                 'url' => $file_url
             ];
         }
     }
 }
+
+// --- APPLY NATURAL SORTING ---
+// ksort with SORT_NATURAL | SORT_FLAG_CASE ensures 100.png < 1000.png 
+// and ignores uppercase/lowercase discrepancies.
+uksort($directories, 'strnatcasecmp');
+uksort($pdfs, 'strnatcasecmp');
+uksort($images, 'strnatcasecmp');
 ?>
 
 <main class="container">
