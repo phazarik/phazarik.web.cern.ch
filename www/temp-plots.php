@@ -5,16 +5,25 @@ include 'header.php';
 // 1. Configuration & Security
 // ---------------------------------------------------------
 $base_dir = 'temp-plots';
-// Get absolute path of the base directory to prevent directory traversal attacks
 $base_path = realpath(__DIR__ . '/' . $base_dir);
 
-// Get requested directory path, sanitize it
+// CRITICAL: Check if the temp-plots/ directory exists before proceeding
+if (!$base_path || !is_dir($base_path)) {
+    echo '<main class="container"><div class="alert alert-warning mt-5">';
+    echo '<i class="bi bi-exclamation-triangle-fill me-2"></i>';
+    echo '<strong>Directory Not Found:</strong> The <code>' . $base_dir . '/</code> directory is missing from the server.';
+    echo '<br><a href="index.php" class="alert-link">Return to Home</a>';
+    echo '</div></main>';
+    include 'footer.php';
+    exit; // Stop execution
+}
+
+// Sanitize and resolve the requested sub-directory
 $req_dir = isset($_GET['dir']) ? trim($_GET['dir'], '/') : '';
 $target_path = realpath($base_path . '/' . $req_dir);
 
-// Security Check: Ensure the target path is inside the base path and actually exists
+// Security Check: Prevent directory traversal
 if ($target_path === false || strpos($target_path, $base_path) !== 0 || !is_dir($target_path)) {
-    // Fallback to base directory if invalid/malicious path is provided
     $target_path = $base_path;
     $req_dir = '';
 }
@@ -67,7 +76,7 @@ foreach ($items as $item) {
         <div class="col-12 border-bottom pb-3">
             <a href="index.php" class="text-decoration-none fw-bold"><i class="bi bi-house-door-fill me-1"></i> Home</a>
             <span class="mx-2 text-muted">/</span>
-            <a href="plots.php" class="text-decoration-none fw-bold"><?php echo $base_dir; ?></a>
+            <a href="temp-plots.php" class="text-decoration-none fw-bold"><?php echo $base_dir; ?></a>
             
             <?php
             // Dynamically build breadcrumbs for deep directories
