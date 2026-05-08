@@ -2,7 +2,7 @@
         <div class="row">
             <!-- Added 'text-end' here -->
             <div class="col-12 text-muted small text-end">
-                &copy; <?php echo date("Y"); ?> P. Hazarika | IISER Pune & CERN CMS Collaboration
+                &copy; <?php echo date("Y"); ?> Prachurjya Hazarika | IISER Pune | CERN | CMS
             </div>
         </div>
     </footer>
