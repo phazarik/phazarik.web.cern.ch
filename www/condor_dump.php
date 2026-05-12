@@ -113,7 +113,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($text_files)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Logs & Text</h2>
+                <h2 class="h5 mb-3 text-muted">Logs & text</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($text_files as $txt): ?>
                         <li><a href="<?php echo htmlspecialchars($txt['url']); ?>" target="_blank"><i class="bi bi-file-earmark-text me-2"></i><?php echo htmlspecialchars($txt['name']); ?></a></li>
@@ -127,7 +127,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($data_files)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Analysis Data (JSON/ROOT)</h2>
+                <h2 class="h5 mb-3 text-muted">Data (JSON/ROOT)</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($data_files as $data): ?>
                         <li>

@@ -1,0 +1,5 @@
+.git/
+www/temp-plots/
+www/circles/
+*.root
+*.tar.gz
