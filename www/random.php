@@ -147,7 +147,7 @@ uksort($files, 'strnatcasecmp');
     <?php if (!empty($directories)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Directories</h2>
+                <h2 class="h5 mb-3 text-muted">Directories [<?php echo count($directories); ?>] </h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($directories as $dir): ?>
                         <li>
@@ -165,7 +165,7 @@ uksort($files, 'strnatcasecmp');
     <?php if (!empty($files)): ?>
         <div class="row mb-5">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Files & Documents</h2>
+                <h2 class="h5 mb-3 text-muted">Files & Documents [<?php echo count($files); ?>]</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($files as $file): ?>
                         <li>
@@ -183,7 +183,7 @@ uksort($files, 'strnatcasecmp');
     <?php if (!empty($images)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Images & Figures</h2>
+                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Images & Figures [<?php echo count($images); ?>]</h2>
                 <div class="d-flex flex-wrap gap-4">
                     <?php foreach ($images as $img): ?>
                         <div style="width: 350px;">

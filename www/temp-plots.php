@@ -102,7 +102,7 @@ uksort($images, 'strnatcasecmp');
     <?php if (!empty($directories)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Directories</h2>
+                <h2 class="h5 mb-3 text-muted">Directories [<?php echo count($directories); ?>]</h2>
                 <!-- Removed column-count to make it a single vertical list -->
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($directories as $dir): ?>
@@ -121,7 +121,7 @@ uksort($images, 'strnatcasecmp');
     <?php if (!empty($pdfs)): ?>
         <div class="row mb-5">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Documents (PDF)</h2>
+                <h2 class="h5 mb-3 text-muted">Documents (PDF) [<?php echo count($pdfs); ?>]</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($pdfs as $pdf): ?>
                         <li>
@@ -139,7 +139,7 @@ uksort($images, 'strnatcasecmp');
     <?php if (!empty($images)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Figures</h2>
+                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Figures [<?php echo count($images); ?>]</h2>
                 <!-- Flexbox wrap logic: items sit side-by-side and wrap to the next line automatically -->
                 <div class="d-flex flex-wrap gap-4">
                     <?php foreach ($images as $img): ?>

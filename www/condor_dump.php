@@ -99,7 +99,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($directories)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Directories</h2>
+                <h2 class="h5 mb-3 text-muted">Directories [<?php echo count($directories); ?>]</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($directories as $dir): ?>
                         <li><a href="<?php echo $dir['url']; ?>"><i class="bi bi-folder-fill text-secondary me-2"></i><?php echo htmlspecialchars($dir['name']); ?></a></li>
@@ -113,7 +113,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($text_files)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Logs & text</h2>
+                <h2 class="h5 mb-3 text-muted">Logs & text [<?php echo count($text_files); ?>]</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($text_files as $txt): ?>
                         <li><a href="<?php echo htmlspecialchars($txt['url']); ?>" target="_blank"><i class="bi bi-file-earmark-text me-2"></i><?php echo htmlspecialchars($txt['name']); ?></a></li>
@@ -127,7 +127,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($data_files)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Data (JSON/ROOT)</h2>
+                <h2 class="h5 mb-3 text-muted">Data (JSON/ROOT) [<?php echo count($data_files); ?>]</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($data_files as $data): ?>
                         <li>
@@ -145,7 +145,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($pdfs)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Documents (PDF)</h2>
+                <h2 class="h5 mb-3 text-muted">Documents (PDF) [<?php echo count($pdfs); ?>]</h2>
                 <ul class="list-unstyled directory-list">
                     <?php foreach ($pdfs as $pdf): ?>
                         <li><a href="<?php echo htmlspecialchars($pdf['url']); ?>" target="_blank"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i><?php echo htmlspecialchars($pdf['name']); ?></a></li>
@@ -159,7 +159,7 @@ uksort($text_files, 'strnatcasecmp');
     <?php if (!empty($images)): ?>
         <div class="row mb-4">
             <div class="col-12">
-                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Figures</h2>
+                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Figures [<?php echo count($images); ?>]</h2>
                 <div class="d-flex flex-wrap gap-4">
                     <?php foreach ($images as $img): ?>
                         <div style="width: 350px;">
