@@ -21,7 +21,10 @@
     <!-- Barebones Navigation -->
     <nav class="navbar navbar-expand-md border-bottom mb-4">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.php"> <i class="bi bi-person-circle" style="color: gray; margin-right: 4px"></i> Prachurjya Hazarika</a>
+            <a class="navbar-brand fw-bold" href="index.php">
+                <img src="img/favicon.png" alt="Prachurjya Hazarika" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover; margin-right: 6px;">
+                Prachurjya Hazarika
+            </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
