@@ -109,6 +109,41 @@ uksort($text_files, 'strnatcasecmp');
         </div>
     <?php endif; ?>
 
+    <!-- Section: Figures -->
+    <?php if (!empty($images)): ?>
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Figures [<?php echo count($images); ?>]</h2>
+                <div class="d-flex flex-wrap gap-4">
+                    <?php foreach ($images as $img): ?>
+                        <div style="width: 350px;">
+                            <div class="text-truncate mb-1 small text-muted font-monospace" title="<?php echo htmlspecialchars($img['name']); ?>">
+                                <?php echo htmlspecialchars($img['name']); ?>
+                            </div>
+                            <a href="<?php echo htmlspecialchars($img['url']); ?>" target="_blank">
+                                <img src="<?php echo htmlspecialchars($img['url']); ?>" class="img-fluid" style="height: 260px; width: 100%; object-fit: contain;">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Section: PDFs -->
+    <?php if (!empty($pdfs)): ?>
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h5 mb-3 text-muted">Documents (PDF) [<?php echo count($pdfs); ?>]</h2>
+                <ul class="list-unstyled directory-list">
+                    <?php foreach ($pdfs as $pdf): ?>
+                        <li><a href="<?php echo htmlspecialchars($pdf['url']); ?>" target="_blank"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i><?php echo htmlspecialchars($pdf['name']); ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <!-- Section: Text/Logs -->
     <?php if (!empty($text_files)): ?>
         <div class="row mb-4">
@@ -137,41 +172,6 @@ uksort($text_files, 'strnatcasecmp');
                         </li>
                     <?php endforeach; ?>
                 </ul>
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <!-- Section: PDFs -->
-    <?php if (!empty($pdfs)): ?>
-        <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Documents (PDF) [<?php echo count($pdfs); ?>]</h2>
-                <ul class="list-unstyled directory-list">
-                    <?php foreach ($pdfs as $pdf): ?>
-                        <li><a href="<?php echo htmlspecialchars($pdf['url']); ?>" target="_blank"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i><?php echo htmlspecialchars($pdf['name']); ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <!-- Section: Figures -->
-    <?php if (!empty($images)): ?>
-        <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="h5 mb-3 text-muted border-bottom pb-2">Figures [<?php echo count($images); ?>]</h2>
-                <div class="d-flex flex-wrap gap-4">
-                    <?php foreach ($images as $img): ?>
-                        <div style="width: 350px;">
-                            <div class="text-truncate mb-1 small text-muted font-monospace" title="<?php echo htmlspecialchars($img['name']); ?>">
-                                <?php echo htmlspecialchars($img['name']); ?>
-                            </div>
-                            <a href="<?php echo htmlspecialchars($img['url']); ?>" target="_blank">
-                                <img src="<?php echo htmlspecialchars($img['url']); ?>" class="img-fluid" style="height: 260px; width: 100%; object-fit: contain;">
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
             </div>
         </div>
     <?php endif; ?>

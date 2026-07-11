@@ -34,6 +34,8 @@ if ($target_path === false || strpos($target_path, $base_path) !== 0 || !is_dir(
 $directories = [];
 $pdfs = [];
 $images = [];
+$data_files = [];
+$text_files = [];
 
 $items = scandir($target_path);
 foreach ($items as $item) {
@@ -62,6 +64,17 @@ foreach ($items as $item) {
                 'name' => $item,
                 'url' => $file_url
             ];
+        } elseif (in_array($ext, ['json', 'root'])) {
+            $data_files[$item] = [
+                'name' => $item,
+                'url' => $file_url,
+                'ext' => $ext
+            ];
+        } elseif (in_array($ext, ['txt', 'log', 'out', 'err'])) {
+            $text_files[$item] = [
+                'name' => $item,
+                'url' => $file_url
+            ];
         }
     }
 }
@@ -72,6 +85,8 @@ foreach ($items as $item) {
 uksort($directories, 'strnatcasecmp');
 uksort($pdfs, 'strnatcasecmp');
 uksort($images, 'strnatcasecmp');
+uksort($data_files, 'strnatcasecmp');
+uksort($text_files, 'strnatcasecmp');
 ?>
 
 <main class="container">
@@ -117,24 +132,6 @@ uksort($images, 'strnatcasecmp');
         </div>
     <?php endif; ?>
 
-    <!-- Section: PDF Documents -->
-    <?php if (!empty($pdfs)): ?>
-        <div class="row mb-5">
-            <div class="col-12">
-                <h2 class="h5 mb-3 text-muted">Documents (PDF) [<?php echo count($pdfs); ?>]</h2>
-                <ul class="list-unstyled directory-list">
-                    <?php foreach ($pdfs as $pdf): ?>
-                        <li>
-                            <a href="<?php echo htmlspecialchars($pdf['url']); ?>" target="_blank">
-                                <i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i><?php echo htmlspecialchars($pdf['name']); ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-    <?php endif; ?>
-
     <!-- Section: Images (Side-by-side auto-wrapping grid) -->
     <?php if (!empty($images)): ?>
         <div class="row mb-4">
@@ -155,6 +152,68 @@ uksort($images, 'strnatcasecmp');
                         </div>
                     <?php endforeach; ?>
                 </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Section: PDF Documents -->
+    <?php if (!empty($pdfs)): ?>
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h5 mb-3 text-muted">Documents (PDF) [<?php echo count($pdfs); ?>]</h2>
+                <ul class="list-unstyled directory-list">
+                    <?php foreach ($pdfs as $pdf): ?>
+                        <li>
+                            <a href="<?php echo htmlspecialchars($pdf['url']); ?>" target="_blank">
+                                <i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i><?php echo htmlspecialchars($pdf['name']); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Section: Text/Logs -->
+    <?php if (!empty($text_files)): ?>
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h5 mb-3 text-muted">
+                    Logs & Text [<?php echo count($text_files); ?>]
+                </h2>
+                <ul class="list-unstyled directory-list">
+                    <?php foreach ($text_files as $txt): ?>
+                        <li>
+                            <a href="<?php echo htmlspecialchars($txt['url']); ?>" target="_blank">
+                                <i class="bi bi-file-earmark-text me-2"></i>
+                                <?php echo htmlspecialchars($txt['name']); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Section: Data Files (JSON/ROOT) -->
+    <?php if (!empty($data_files)): ?>
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h5 mb-3 text-muted">
+                    Data (JSON/ROOT) [<?php echo count($data_files); ?>]
+                </h2>
+                <ul class="list-unstyled directory-list">
+                    <?php foreach ($data_files as $data): ?>
+                        <li>
+                            <a href="<?php echo htmlspecialchars($data['url']); ?>" download>
+                                <i class="bi <?php echo ($data['ext'] === 'json')
+                                                    ? 'bi-braces'
+                                                    : 'bi-database-fill'; ?> text-info me-2"></i>
+                                <?php echo htmlspecialchars($data['name']); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
     <?php endif; ?>
